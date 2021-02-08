@@ -1,42 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:leave_management/leave.dart';
-import 'package:leave_management/profile.dart';
-import 'package:leave_management/scan.dart';
-import 'package:leave_management/staff.dart';
+import 'package:leave_management/hod/profile.dart';
+import 'package:leave_management/hod/scan.dart';
+import 'package:leave_management/hod/staffleavedashboard.dart';
+import 'package:leave_management/hod/myleavedashboard.dart';
+import 'package:leave_management/hod/staff.dart';
+import 'package:leave_management/user.dart';
 
-void main() {
-  runApp(MyApp());
-}
+class DashboardHod extends StatefulWidget {
+  final User user;
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-        title: 'Inspirazs',
-        theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
-        home: MyHomePage(title: 'INSPIRAZS STAFF MANAGEMENT'),
-        debugShowCheckedModeBanner: false);
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  final String title;
+  const DashboardHod({Key key, this.user}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _DashboardHodState createState() => _DashboardHodState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _DashboardHodState extends State<DashboardHod> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Inspirazs Staff Management'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.deepPurple,
+              ),
+              child: Text(
+                widget.user.name,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: Icon(Icons.message),
+              title: Text('Messages'),
+            ),
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('Profile'),
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('Settings'),
+            ),
+          ],
+        ),
       ),
       body: GridView.count(
         crossAxisCount: 2,
@@ -44,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
         childAspectRatio: 8.0 / 9.0,
         children: <Widget>[
           Card(
+            elevation: 10,
             color: Colors.blue,
             clipBehavior: Clip.antiAlias,
             margin: EdgeInsets.all(9.0),
@@ -52,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Staff(),
+                    builder: (context) => StaffHod(),
                   ),
                 );
               },
@@ -82,6 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Card(
+            elevation: 10,
             color: Colors.yellow,
             clipBehavior: Clip.antiAlias,
             margin: EdgeInsets.all(9.0),
@@ -90,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Scan(),
+                    builder: (context) => ScanHod(),
                   ),
                 );
               },
@@ -120,6 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Card(
+            elevation: 10,
             color: Colors.red,
             clipBehavior: Clip.antiAlias,
             margin: EdgeInsets.all(9.0),
@@ -128,7 +146,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Leave(),
+                    builder: (context) =>
+                        MyLeaveDashboardHod(user: widget.user),
                   ),
                 );
               },
@@ -146,7 +165,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         Center(
                           child: Text(
-                            "Leave",
+                            "My Leave",
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -158,6 +177,47 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ),
           Card(
+            elevation: 10,
+            color: Colors.orange,
+            clipBehavior: Clip.antiAlias,
+            margin: EdgeInsets.all(9.0),
+            child: InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        StaffLeaveDashboardHod(user: widget.user),
+                  ),
+                );
+              },
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  AspectRatio(
+                    aspectRatio: 14.0 / 12.0,
+                    child: Image.asset('assets/images/staff-sick.png'),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Center(
+                          child: Text(
+                            "Staff Leave",
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Card(
+            elevation: 10,
             color: Colors.green,
             clipBehavior: Clip.antiAlias,
             margin: EdgeInsets.all(9.0),
@@ -166,7 +226,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => Profile(),
+                    builder: (context) => ProfileHod(user: widget.user),
                   ),
                 );
               },
@@ -194,7 +254,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
