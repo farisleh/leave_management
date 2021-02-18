@@ -91,13 +91,13 @@ class _ViewStaffProfileManagerState extends State<ViewStaffProfileManager> {
                         ),
                         Card(
                           margin: EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 5.0),
+                              horizontal: 10.0, vertical: 1.0),
                           clipBehavior: Clip.antiAlias,
                           color: Colors.white,
                           elevation: 5.0,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 8.0, vertical: 20.0),
+                                horizontal: 8.0, vertical: 7.0),
                             child: Row(
                               children: <Widget>[
                                 Expanded(

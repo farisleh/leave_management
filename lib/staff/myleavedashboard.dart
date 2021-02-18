@@ -148,12 +148,12 @@ class _MyPendingScreenStaffState extends State<MyPendingScreenStaff> {
                                   subtitle: Text(
                                       list[index]['employee_name'] +
                                           '\n' +
-                                          'Date Applied: ' +
-                                          list[index]['create_at'] +
+                                          'Applied On: ' +
+                                          list[index]['convert_create_at'] +
                                           '\n' +
-                                          list[index]['start_date'] +
+                                          list[index]['convert_start_date'] +
                                           ' - ' +
-                                          list[index]['end_date'] +
+                                          list[index]['convert_end_date'] +
                                           '\n' +
                                           'Status: Pending',
                                       style: TextStyle(fontSize: 16.0)),
@@ -171,22 +171,21 @@ class _MyPendingScreenStaffState extends State<MyPendingScreenStaff> {
                                             builder: (context) =>
                                                 ViewPendingLeaveStaff(
                                                     id: list[index]['id'],
-                                                    dateApplied: list[index]
-                                                        ['create_at'],
+                                                    dateApplied:
+                                                        list[index][
+                                                            'convert_create_at'],
                                                     email: list[index]
                                                         ['employee_email'],
                                                     name: list[index]
                                                         ['employee_name'],
-                                                    leave:
-                                                        list[index]
-                                                            ['leave_type'],
-                                                    desc:
-                                                        list[index]
-                                                            ['description'],
+                                                    leave: list[index]
+                                                        ['leave_type'],
+                                                    desc: list[index]
+                                                        ['description'],
                                                     startDate: list[index]
-                                                        ['start_date'],
+                                                        ['convert_start_date'],
                                                     endDate: list[index]
-                                                        ['end_date']),
+                                                        ['convert_end_date']),
                                           ),
                                         );
                                       },
@@ -348,12 +347,12 @@ class _MyAcceptScreenStaffState extends State<MyAcceptScreenStaff> {
                                   subtitle: Text(
                                       list[index]['employee_name'] +
                                           '\n' +
-                                          'Date Applied: ' +
-                                          list[index]['create_at'] +
+                                          'Applied On: ' +
+                                          list[index]['convert_create_at'] +
                                           '\n' +
-                                          list[index]['start_date'] +
+                                          list[index]['convert_start_date'] +
                                           ' - ' +
-                                          list[index]['end_date'] +
+                                          list[index]['convert_end_date'] +
                                           '\n' +
                                           'Status: Accepted',
                                       style: TextStyle(fontSize: 16.0)),
@@ -372,7 +371,7 @@ class _MyAcceptScreenStaffState extends State<MyAcceptScreenStaff> {
                                                 ViewAcceptLeaveStaff(
                                                     id: list[index]['id'],
                                                     dateApplied: list[index]
-                                                        ['create_at'],
+                                                        ['convert_create_at'],
                                                     email: list[index]
                                                         ['employee_email'],
                                                     name: list[index]
@@ -382,9 +381,9 @@ class _MyAcceptScreenStaffState extends State<MyAcceptScreenStaff> {
                                                     desc: list[index]
                                                         ['description'],
                                                     startDate: list[index]
-                                                        ['start_date'],
+                                                        ['convert_start_date'],
                                                     endDate: list[index]
-                                                        ['end_date']),
+                                                        ['convert_end_date']),
                                           ),
                                         );
                                       },
@@ -490,12 +489,12 @@ class _MyRejectScreenStaffState extends State<MyRejectScreenStaff> {
                                   subtitle: Text(
                                       list[index]['employee_name'] +
                                           '\n' +
-                                          'Date Applied: ' +
-                                          list[index]['create_at'] +
+                                          'Applied On: ' +
+                                          list[index]['convert_create_at'] +
                                           '\n' +
-                                          list[index]['start_date'] +
+                                          list[index]['convert_start_date'] +
                                           ' - ' +
-                                          list[index]['end_date'] +
+                                          list[index]['convert_end_date'] +
                                           '\n' +
                                           'Status: Rejected',
                                       style: TextStyle(fontSize: 16.0)),
@@ -514,7 +513,7 @@ class _MyRejectScreenStaffState extends State<MyRejectScreenStaff> {
                                                 ViewRejectLeaveStaff(
                                                     id: list[index]['id'],
                                                     dateApplied: list[index]
-                                                        ['create_at'],
+                                                        ['convert_create_at'],
                                                     email: list[index]
                                                         ['employee_email'],
                                                     name: list[index]
@@ -524,9 +523,9 @@ class _MyRejectScreenStaffState extends State<MyRejectScreenStaff> {
                                                     desc: list[index]
                                                         ['description'],
                                                     startDate: list[index]
-                                                        ['start_date'],
+                                                        ['convert_start_date'],
                                                     endDate: list[index]
-                                                        ['end_date']),
+                                                        ['convert_end_date']),
                                           ),
                                         );
                                       },

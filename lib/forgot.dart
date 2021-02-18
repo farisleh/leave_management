@@ -85,7 +85,7 @@ class _ForgotState extends State<Forgot> {
                       GestureDetector(
                         onTap: _onBack,
                         child: Text(
-                          "Home Page".toUpperCase(),
+                          "Back To Home Page".toUpperCase(),
                           style: TextStyle(
                               color: Theme.of(context).primaryColor,
                               fontWeight: FontWeight.w600),

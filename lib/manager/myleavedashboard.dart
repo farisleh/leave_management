@@ -149,12 +149,12 @@ class _MyPendingScreenManagerState extends State<MyPendingScreenManager> {
                                   subtitle: Text(
                                       list[index]['employee_name'] +
                                           '\n' +
-                                          'Date Applied: ' +
-                                          list[index]['create_at'] +
+                                          'Applied On: ' +
+                                          list[index]['convert_create_at'] +
                                           '\n' +
-                                          list[index]['start_date'] +
+                                          list[index]['convert_start_date'] +
                                           ' - ' +
-                                          list[index]['end_date'] +
+                                          list[index]['convert_end_date'] +
                                           '\n' +
                                           'Status: Pending',
                                       style: TextStyle(fontSize: 16.0)),
@@ -169,24 +169,28 @@ class _MyPendingScreenManagerState extends State<MyPendingScreenManager> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder:
-                                                (context) =>
-                                                    MyViewPendingLeaveManager(
-                                                        id: list[index]['id'],
-                                                        dateApplied: list[index]
-                                                            ['create_at'],
-                                                        email: list[index]
-                                                            ['employee_email'],
-                                                        name: list[index]
+                                            builder: (context) =>
+                                                MyViewPendingLeaveManager(
+                                                    id: list[index]['id'],
+                                                    dateApplied: list[index][
+                                                        'convert_create_at'],
+                                                    email: list[
+                                                            index]
+                                                        ['employee_email'],
+                                                    name:
+                                                        list[
+                                                                index]
                                                             ['employee_name'],
-                                                        leave: list[index]
+                                                    leave:
+                                                        list[
+                                                                index]
                                                             ['leave_type'],
-                                                        desc: list[index]
-                                                            ['description'],
-                                                        startDate: list[index]
-                                                            ['start_date'],
-                                                        endDate: list[index]
-                                                            ['end_date']),
+                                                    desc: list[index]
+                                                        ['description'],
+                                                    startDate: list[index]
+                                                        ['convert_start_date'],
+                                                    endDate: list[index]
+                                                        ['convert_end_date']),
                                           ),
                                         );
                                       },
@@ -348,12 +352,12 @@ class _MyAcceptScreenManagerState extends State<MyAcceptScreenManager> {
                                   subtitle: Text(
                                       list[index]['employee_name'] +
                                           '\n' +
-                                          'Date Applied: ' +
-                                          list[index]['create_at'] +
+                                          'Applied On: ' +
+                                          list[index]['convert_create_at'] +
                                           '\n' +
-                                          list[index]['start_date'] +
+                                          list[index]['convert_start_date'] +
                                           ' - ' +
-                                          list[index]['end_date'] +
+                                          list[index]['convert_end_date'] +
                                           '\n' +
                                           'Status: Accepted',
                                       style: TextStyle(fontSize: 16.0)),
@@ -372,7 +376,7 @@ class _MyAcceptScreenManagerState extends State<MyAcceptScreenManager> {
                                                 MyViewAcceptLeaveManager(
                                                     id: list[index]['id'],
                                                     dateApplied: list[index]
-                                                        ['create_at'],
+                                                        ['convert_create_at'],
                                                     email: list[index]
                                                         ['employee_email'],
                                                     name: list[index]
@@ -382,9 +386,9 @@ class _MyAcceptScreenManagerState extends State<MyAcceptScreenManager> {
                                                     desc: list[index]
                                                         ['description'],
                                                     startDate: list[index]
-                                                        ['start_date'],
+                                                        ['convert_start_date'],
                                                     endDate: list[index]
-                                                        ['end_date']),
+                                                        ['convert_end_date']),
                                           ),
                                         );
                                       },
@@ -490,12 +494,12 @@ class _MyRejectScreenManagerState extends State<MyRejectScreenManager> {
                                   subtitle: Text(
                                       list[index]['employee_name'] +
                                           '\n' +
-                                          'Date Applied: ' +
-                                          list[index]['create_at'] +
+                                          'Applied On: ' +
+                                          list[index]['convert_create_at'] +
                                           '\n' +
-                                          list[index]['start_date'] +
+                                          list[index]['convert_start_date'] +
                                           ' - ' +
-                                          list[index]['end_date'] +
+                                          list[index]['convert_end_date'] +
                                           '\n' +
                                           'Status: Rejected',
                                       style: TextStyle(fontSize: 16.0)),
@@ -514,7 +518,7 @@ class _MyRejectScreenManagerState extends State<MyRejectScreenManager> {
                                                 MyViewRejectLeaveManager(
                                                     id: list[index]['id'],
                                                     dateApplied: list[index]
-                                                        ['create_at'],
+                                                        ['convert_create_at'],
                                                     email: list[index]
                                                         ['employee_email'],
                                                     name: list[index]
@@ -524,9 +528,9 @@ class _MyRejectScreenManagerState extends State<MyRejectScreenManager> {
                                                     desc: list[index]
                                                         ['description'],
                                                     startDate: list[index]
-                                                        ['start_date'],
+                                                        ['convert_start_date'],
                                                     endDate: list[index]
-                                                        ['end_date']),
+                                                        ['convert_end_date']),
                                           ),
                                         );
                                       },

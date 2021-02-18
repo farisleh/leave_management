@@ -126,12 +126,12 @@ class _StaffPendingScreenOwnerState extends State<StaffPendingScreenOwner> {
                                   subtitle: Text(
                                       list[index]['employee_name'] +
                                           '\n' +
-                                          'Date Applied: ' +
-                                          list[index]['create_at'] +
+                                          'Applied On: ' +
+                                          list[index]['convert_create_at'] +
                                           '\n' +
-                                          list[index]['start_date'] +
+                                          list[index]['convert_start_date'] +
                                           ' - ' +
-                                          list[index]['end_date'] +
+                                          list[index]['convert_end_date'] +
                                           '\n' +
                                           'Status: Pending',
                                       style: TextStyle(fontSize: 16.0)),
@@ -150,7 +150,7 @@ class _StaffPendingScreenOwnerState extends State<StaffPendingScreenOwner> {
                                                 ViewStaffLeaveOwner(
                                                     id: list[index]['id'],
                                                     dateApplied: list[index]
-                                                        ['create_at'],
+                                                        ['convert_create_at'],
                                                     email: list[index]
                                                         ['employee_email'],
                                                     name: list[index]
@@ -160,9 +160,9 @@ class _StaffPendingScreenOwnerState extends State<StaffPendingScreenOwner> {
                                                     desc: list[index]
                                                         ['description'],
                                                     startDate: list[index]
-                                                        ['start_date'],
+                                                        ['convert_start_date'],
                                                     endDate: list[index]
-                                                        ['end_date']),
+                                                        ['convert_end_date']),
                                           ),
                                         );
                                       },
@@ -266,12 +266,12 @@ class _StaffAcceptScreenOwnerState extends State<StaffAcceptScreenOwner> {
                                   subtitle: Text(
                                       list[index]['employee_name'] +
                                           '\n' +
-                                          'Date Applied: ' +
-                                          list[index]['create_at'] +
+                                          'Applied On: ' +
+                                          list[index]['convert_create_at'] +
                                           '\n' +
-                                          list[index]['start_date'] +
+                                          list[index]['convert_start_date'] +
                                           ' - ' +
-                                          list[index]['end_date'] +
+                                          list[index]['convert_end_date'] +
                                           '\n' +
                                           'Status: Accepted',
                                       style: TextStyle(fontSize: 16.0)),
@@ -290,7 +290,7 @@ class _StaffAcceptScreenOwnerState extends State<StaffAcceptScreenOwner> {
                                                 ViewAcceptLeaveOwner(
                                                     id: list[index]['id'],
                                                     dateApplied: list[index]
-                                                        ['create_at'],
+                                                        ['convert_create_at'],
                                                     email: list[index]
                                                         ['employee_email'],
                                                     name: list[index]
@@ -300,9 +300,9 @@ class _StaffAcceptScreenOwnerState extends State<StaffAcceptScreenOwner> {
                                                     desc: list[index]
                                                         ['description'],
                                                     startDate: list[index]
-                                                        ['start_date'],
+                                                        ['convert_start_date'],
                                                     endDate: list[index]
-                                                        ['end_date']),
+                                                        ['convert_end_date']),
                                           ),
                                         );
                                       },
@@ -406,12 +406,12 @@ class _StaffRejectScreenOwnerState extends State<StaffRejectScreenOwner> {
                                   subtitle: Text(
                                       list[index]['employee_name'] +
                                           '\n' +
-                                          'Date Applied: ' +
-                                          list[index]['create_at'] +
+                                          'Applied On: ' +
+                                          list[index]['convert_create_at'] +
                                           '\n' +
-                                          list[index]['start_date'] +
+                                          list[index]['convert_start_date'] +
                                           ' - ' +
-                                          list[index]['end_date'] +
+                                          list[index]['convert_end_date'] +
                                           '\n' +
                                           'Status: Rejected',
                                       style: TextStyle(fontSize: 16.0)),
@@ -430,7 +430,7 @@ class _StaffRejectScreenOwnerState extends State<StaffRejectScreenOwner> {
                                                 ViewRejectLeaveOwner(
                                                     id: list[index]['id'],
                                                     dateApplied: list[index]
-                                                        ['create_at'],
+                                                        ['convert_create_at'],
                                                     email: list[index]
                                                         ['employee_email'],
                                                     name: list[index]
@@ -440,9 +440,9 @@ class _StaffRejectScreenOwnerState extends State<StaffRejectScreenOwner> {
                                                     desc: list[index]
                                                         ['description'],
                                                     startDate: list[index]
-                                                        ['start_date'],
+                                                        ['convert_start_date'],
                                                     endDate: list[index]
-                                                        ['end_date']),
+                                                        ['convert_end_date']),
                                           ),
                                         );
                                       },

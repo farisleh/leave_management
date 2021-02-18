@@ -58,6 +58,7 @@ class _MyLeaveHodState extends State<MyLeaveHod> {
 
   final leaveList = [
     "Annual Leave",
+    "Emergency Leave",
     "Medical Leave",
     "Unpaid Leave",
     "Maternity Leave",
@@ -238,7 +239,8 @@ class _MyLeaveHodState extends State<MyLeaveHod> {
         }).then((res) async {
       Toast.show(res.body, context,
           duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
-      if (res.body.contains("success")) {
+      if (res.body.contains(
+          "Your leave has successfully submit, please refresh the screen!")) {
         pr.hide();
         Navigator.pop(
             context,

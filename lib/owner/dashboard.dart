@@ -26,17 +26,18 @@ class _DashboardOwnerState extends State<DashboardOwner> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
+            UserAccountsDrawerHeader(
               decoration: BoxDecoration(
                 color: Colors.deepPurple,
               ),
-              child: Text(
-                widget.user.name,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              currentAccountPicture: new CircleAvatar(
+                radius: 50.0,
+                backgroundColor: const Color(0xFF778899),
+                backgroundImage: NetworkImage(
+                    "https://attendance.inspirazs.com/profile/${widget.user.email}.jpg"),
               ),
+              accountEmail: Text(widget.user.email),
+              accountName: Text(widget.user.name),
             ),
             ListTile(
               leading: Icon(Icons.message),

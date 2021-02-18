@@ -517,6 +517,7 @@ class _AddStaffManagerState extends State<AddStaffManager> {
               context,
               MaterialPageRoute(
                   builder: (BuildContext context) => StaffManager()));
+          Navigator.pop(context);
         } else {
           pr.hide();
           Toast.show(res.body + "!! Please reload", context,

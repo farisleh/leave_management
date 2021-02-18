@@ -38,7 +38,7 @@ class _LoginState extends State<Login> {
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: Scaffold(
-        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomInset: false,
         body: new Container(
           padding: EdgeInsets.all(30.0),
           child: Column(

@@ -1,12 +1,27 @@
+import 'dart:convert';
+import 'dart:io';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:leave_management/manager/settings.dart';
 import 'package:leave_management/user.dart';
+import 'package:http/http.dart' as http;
+import 'package:toast/toast.dart';
 
-class ProfileManager extends StatelessWidget {
+String urluploadImage =
+    "https://attendance.inspirazs.com/php/update_imageprofile.php";
+File _image;
+int number = 0;
+
+class ProfileManager extends StatefulWidget {
   final User user;
-
   const ProfileManager({Key key, this.user}) : super(key: key);
 
+  @override
+  _ProfileManagerState createState() => _ProfileManagerState();
+}
+
+class _ProfileManagerState extends State<ProfileManager> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +36,8 @@ class ProfileManager extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SettingsPageManager(user: user),
+                    builder: (context) =>
+                        SettingsPageManager(user: widget.user),
                   ),
                 );
               }),
@@ -44,17 +60,53 @@ class ProfileManager extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        CircleAvatar(
-                          backgroundImage: NetworkImage(
-                            "https://attendance.inspirazs.com/profile/${user.email}.jpg",
+                        new Padding(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Center(
+                            child: GestureDetector(
+                              onTap: () {
+                                _takePicture();
+                              },
+                              child: Stack(
+                                children: <Widget>[
+                                  CircleAvatar(
+                                      radius: 55.0,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            image: DecorationImage(
+                                              image: _image == null
+                                                  ? NetworkImage(
+                                                      "https://attendance.inspirazs.com/profile/${widget.user.email}.jpg")
+                                                  : FileImage(_image),
+                                              fit: BoxFit.fill,
+                                            )),
+                                      )),
+                                  Positioned(
+                                      right: 3,
+                                      bottom: 3,
+                                      child: Container(
+                                        height: 30,
+                                        width: 30,
+                                        child: Icon(
+                                          Icons.edit,
+                                          color: Colors.white,
+                                        ),
+                                        decoration: BoxDecoration(
+                                            color: Colors.deepOrange,
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(20))),
+                                      ))
+                                ],
+                              ),
+                            ),
                           ),
-                          radius: 50.0,
                         ),
                         SizedBox(
                           height: 15.0,
                         ),
                         Text(
-                          user.name,
+                          widget.user.name,
                           style: TextStyle(
                             fontSize: 22.0,
                             color: Colors.white,
@@ -89,7 +141,7 @@ class ProfileManager extends StatelessWidget {
                                         height: 5.0,
                                       ),
                                       Text(
-                                        user.leave + ' days',
+                                        widget.user.leave + ' days',
                                         style: TextStyle(
                                           fontSize: 16.0,
                                           color: Colors.pinkAccent,
@@ -113,7 +165,7 @@ class ProfileManager extends StatelessWidget {
                                         height: 5.0,
                                       ),
                                       Text(
-                                        user.annual + ' days left',
+                                        widget.user.annual + ' days left',
                                         style: TextStyle(
                                           fontSize: 16.0,
                                           color: Colors.pinkAccent,
@@ -164,7 +216,7 @@ class ProfileManager extends StatelessWidget {
                   onPressed: () {},
                 ),
                 title: const Text("I/C Number"),
-                subtitle: Text(user.ic_card),
+                subtitle: Text(widget.user.ic_card),
                 onTap: () => print("ListTile")),
             ListTile(
                 leading: IconButton(
@@ -176,7 +228,7 @@ class ProfileManager extends StatelessWidget {
                   onPressed: () {},
                 ),
                 title: const Text("Phone Number"),
-                subtitle: Text(user.phone),
+                subtitle: Text(widget.user.phone),
                 onTap: () => print("ListTile")),
             ListTile(
                 leading: IconButton(
@@ -188,7 +240,7 @@ class ProfileManager extends StatelessWidget {
                   onPressed: () {},
                 ),
                 title: const Text("Email"),
-                subtitle: Text(user.email),
+                subtitle: Text(widget.user.email),
                 onTap: () => print("ListTile")),
             ListTile(
                 leading: IconButton(
@@ -200,7 +252,7 @@ class ProfileManager extends StatelessWidget {
                   onPressed: () {},
                 ),
                 title: const Text("Department"),
-                subtitle: Text(user.department),
+                subtitle: Text(widget.user.department),
                 onTap: () => print("ListTile")),
             ListTile(
                 leading: IconButton(
@@ -212,7 +264,7 @@ class ProfileManager extends StatelessWidget {
                   onPressed: () {},
                 ),
                 title: const Text("Position"),
-                subtitle: Text(user.position),
+                subtitle: Text(widget.user.position),
                 onTap: () => print("ListTile")),
             ListTile(
                 leading: IconButton(
@@ -224,7 +276,7 @@ class ProfileManager extends StatelessWidget {
                   onPressed: () {},
                 ),
                 title: const Text("Address"),
-                subtitle: Text(user.address),
+                subtitle: Text(widget.user.address),
                 onTap: () => print("ListTile")),
             ListTile(
                 leading: IconButton(
@@ -236,7 +288,7 @@ class ProfileManager extends StatelessWidget {
                   onPressed: () {},
                 ),
                 title: const Text("Birthday"),
-                subtitle: Text(user.birthday),
+                subtitle: Text(widget.user.birthday),
                 onTap: () => print("ListTile")),
             ListTile(
                 leading: IconButton(
@@ -248,7 +300,7 @@ class ProfileManager extends StatelessWidget {
                   onPressed: () {},
                 ),
                 title: const Text("Date Joined"),
-                subtitle: Text(user.join),
+                subtitle: Text(widget.user.join),
                 onTap: () => print("ListTile")),
             ListTile(
                 leading: IconButton(
@@ -260,11 +312,65 @@ class ProfileManager extends StatelessWidget {
                   onPressed: () {},
                 ),
                 title: const Text("Last Date"),
-                subtitle: Text(user.last == "" ? 'N/A' : user.last),
+                subtitle:
+                    Text(widget.user.last == "" ? 'N/A' : widget.user.last),
                 onTap: () => print("ListTile")),
           ],
         ),
       ),
+    );
+  }
+
+  void _takePicture() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: new Text("Take new profile picture?"),
+          content: new Text("Are your sure?"),
+          actions: <Widget>[
+            new FlatButton(
+              child: new Text("Yes"),
+              onPressed: () async {
+                Navigator.of(context).pop();
+                final picker = ImagePicker();
+
+                final pickedFile =
+                    await picker.getImage(source: ImageSource.gallery);
+
+                setState(() {
+                  if (pickedFile != null) {
+                    _image = File(pickedFile.path);
+                  } else {
+                    print('No image selected.');
+                  }
+                });
+                String base64Image = base64Encode(_image.readAsBytesSync());
+                http.post(urluploadImage, body: {
+                  "encoded_string": base64Image,
+                  "email": widget.user.email,
+                }).then((res) {
+                  print(res.body);
+                  if (res.body == "success") {
+                    setState(() {
+                      number = new Random().nextInt(100);
+                      print(number);
+                    });
+                  } else {}
+                }).catchError((err) {
+                  print(err);
+                });
+              },
+            ),
+            new FlatButton(
+              child: new Text("No"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }
