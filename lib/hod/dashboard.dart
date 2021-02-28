@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leave_management/hod/attendance.dart';
 import 'package:leave_management/hod/profile.dart';
 import 'package:leave_management/hod/scan.dart';
 import 'package:leave_management/hod/staffleavedashboard.dart';
@@ -108,7 +109,7 @@ class _DashboardHodState extends State<DashboardHod> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ScanHod(user: widget.user),
+                    builder: (context) => AttendanceHod(user: widget.user),
                   ),
                 );
               },

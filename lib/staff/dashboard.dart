@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:leave_management/staff/attendance.dart';
 import 'package:leave_management/staff/myleavedashboard.dart';
 import 'package:leave_management/staff/profile.dart';
-import 'package:leave_management/staff/scan.dart';
 import 'package:leave_management/staff/staff.dart';
 import 'package:leave_management/user.dart';
 
@@ -107,7 +107,7 @@ class _DashboardStaffState extends State<DashboardStaff> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ScanStaff(user: widget.user),
+                    builder: (context) => AttendanceStaff(user: widget.user),
                   ),
                 );
               },

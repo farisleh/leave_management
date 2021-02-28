@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:http/http.dart' as http;
+import 'package:leave_management/hod/history.dart';
 import 'package:leave_management/user.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 import 'package:toast/toast.dart';
@@ -63,7 +64,7 @@ class _ScanHodState extends State<ScanHod> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Text(
-                  barcode,
+                  "Please scan the attendance",
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -99,10 +100,15 @@ class _ScanHodState extends State<ScanHod> {
               duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
           if (res.body.contains("Your has scan successfully submit")) {
             pr.hide();
-            Navigator.pop(context);
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        HistoryHod(user: widget.user)));
           } else {
             pr.hide();
-            Toast.show(res.body + ". Please scan the attendance", context,
+            Toast.show(
+                res.body + "! Please scan the attendance again.", context,
                 duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
           }
         }).catchError((err) {

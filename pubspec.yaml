@@ -45,6 +45,7 @@ dependencies:
   flutter_launcher_icons: ^0.8.1
   flutter_barcode_scanner: ^1.0.2
   grouped_list: ^3.7.1
+  dio: ^3.0.10
   
 flutter_icons:
   android: true

@@ -5,15 +5,15 @@ import 'package:grouped_list/grouped_list.dart';
 import 'package:http/http.dart' as http;
 import 'package:leave_management/user.dart';
 
-class HistoryManager extends StatefulWidget {
+class HistoryHod extends StatefulWidget {
   final User user;
 
-  const HistoryManager({Key key, this.user}) : super(key: key);
+  const HistoryHod({Key key, this.user}) : super(key: key);
   @override
-  _HistoryManagerState createState() => new _HistoryManagerState();
+  _HistoryHodState createState() => new _HistoryHodState();
 }
 
-class _HistoryManagerState extends State<HistoryManager> {
+class _HistoryHodState extends State<HistoryHod> {
   List data = [];
   GlobalKey<RefreshIndicatorState> refreshKey;
 
@@ -25,8 +25,9 @@ class _HistoryManagerState extends State<HistoryManager> {
   }
 
   void fetchData() async {
-    final response = await http
-        .get("https://attendance.inspirazs.com/php/get_attendance.php");
+    final response = await http.post(
+        "https://attendance.inspirazs.com/php/get_myattendance.php",
+        body: {'name': widget.user.name});
 
     if (response.statusCode == 200) {
       setState(() {
