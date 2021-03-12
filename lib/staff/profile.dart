@@ -243,6 +243,18 @@ class _ProfileStaffState extends State<ProfileStaff> {
             ListTile(
                 leading: IconButton(
                   icon: Icon(
+                    Icons.account_balance,
+                    size: 40.0,
+                    color: Colors.red[900],
+                  ),
+                  onPressed: () {},
+                ),
+                title: const Text("CIMB Account Number"),
+                subtitle: Text(widget.user.cimb),
+                onTap: () => print("ListTile")),
+            ListTile(
+                leading: IconButton(
+                  icon: Icon(
                     Icons.business,
                     size: 40.0,
                     color: Colors.orange,

@@ -5,6 +5,7 @@ class ViewStaffProfileOwner extends StatelessWidget {
   final String name;
   final String ic;
   final String phone;
+  final String cimb;
   final String email;
   final String department;
   final String position;
@@ -18,6 +19,7 @@ class ViewStaffProfileOwner extends StatelessWidget {
       {this.name,
       this.ic,
       this.phone,
+      this.cimb,
       this.email,
       this.department,
       this.position,
@@ -204,6 +206,18 @@ class ViewStaffProfileOwner extends StatelessWidget {
                 ),
                 title: const Text("Email"),
                 subtitle: Text(this.email),
+                onTap: () => print("ListTile")),
+            ListTile(
+                leading: IconButton(
+                  icon: Icon(
+                    Icons.account_balance,
+                    size: 40.0,
+                    color: Colors.red[900],
+                  ),
+                  onPressed: () {},
+                ),
+                title: const Text("CIMB Account Number"),
+                subtitle: Text(this.cimb),
                 onTap: () => print("ListTile")),
             ListTile(
                 leading: IconButton(

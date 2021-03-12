@@ -69,6 +69,7 @@ class _StaffManagerState extends State<StaffManager> {
                                   name: data[index]['name'],
                                   ic: data[index]['ic_card'],
                                   phone: data[index]['phone'],
+                                  cimb: data[index]['cimb'],
                                   email: data[index]['email'],
                                   department: data[index]['department'],
                                   position: data[index]['position'],

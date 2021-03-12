@@ -9,6 +9,7 @@ class ViewStaffProfileManager extends StatefulWidget {
   final String name;
   final String ic;
   final String phone;
+  final String cimb;
   final String email;
   final String department;
   final String position;
@@ -24,6 +25,7 @@ class ViewStaffProfileManager extends StatefulWidget {
       {this.name,
       this.ic,
       this.phone,
+      this.cimb,
       this.email,
       this.department,
       this.position,
@@ -233,6 +235,18 @@ class _ViewStaffProfileManagerState extends State<ViewStaffProfileManager> {
                 ),
                 title: const Text("Email"),
                 subtitle: Text(widget.email),
+                onTap: () => print("ListTile")),
+            ListTile(
+                leading: IconButton(
+                  icon: Icon(
+                    Icons.account_balance,
+                    size: 40.0,
+                    color: Colors.red[900],
+                  ),
+                  onPressed: () {},
+                ),
+                title: const Text("CIMB Account Number"),
+                subtitle: Text(widget.cimb),
                 onTap: () => print("ListTile")),
             ListTile(
                 leading: IconButton(

@@ -36,8 +36,9 @@ class _AddStaffManagerState extends State<AddStaffManager> {
   final TextEditingController _passcontroller = TextEditingController();
   final TextEditingController _leavecontroller = TextEditingController();
   final TextEditingController _phonecontroller = TextEditingController();
+  final TextEditingController _cimbcontroller = TextEditingController();
   final TextEditingController _addresscontroller = TextEditingController();
-  String _name, _ic, _email, _password, _phone, _address, _leave;
+  String _name, _ic, _email, _password, _phone, _cimb, _address, _leave;
 
   Future<Null> _selectBirthdayDate(BuildContext context) async {
     final picked = await showDatePicker(
@@ -249,6 +250,20 @@ class _AddStaffManagerState extends State<AddStaffManager> {
               new Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: TextFormField(
+                  controller: _cimbcontroller,
+                  keyboardType: TextInputType.number,
+                  decoration: new InputDecoration(
+                      icon: Icon(Icons.account_balance),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      labelText: 'CIMB Account Number:'),
+                  style: new TextStyle(fontSize: 17.0, color: Colors.black),
+                ),
+              ),
+              new Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextFormField(
                   controller: _addresscontroller,
                   keyboardType: TextInputType.text,
                   decoration: new InputDecoration(
@@ -439,6 +454,7 @@ class _AddStaffManagerState extends State<AddStaffManager> {
     _email = _emcontroller.text;
     _password = _passcontroller.text;
     _phone = _phonecontroller.text;
+    _cimb = _cimbcontroller.text;
     _address = _addresscontroller.text;
     _leave = _leavecontroller.text;
     _dateTextBirthday = _dateTextBirthday;
@@ -499,6 +515,7 @@ class _AddStaffManagerState extends State<AddStaffManager> {
         "email": _email,
         "password": _password,
         "phone": _phone,
+        "cimb": _cimb,
         "address": _address,
         "department": dropdownValueDepartment,
         "position": dropdownValuePosition,
