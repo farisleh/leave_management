@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:leave_management/staff/attendance.dart';
+import 'package:leave_management/staff/history.dart';
 import 'package:leave_management/staff/myleavedashboard.dart';
 import 'package:leave_management/staff/profile.dart';
+import 'package:leave_management/staff/settings.dart';
 import 'package:leave_management/staff/staff.dart';
 import 'package:leave_management/user.dart';
 
@@ -39,16 +41,40 @@ class _DashboardStaffState extends State<DashboardStaff> {
               accountName: Text(widget.user.name),
             ),
             ListTile(
-              leading: Icon(Icons.message),
-              title: Text('Messages'),
+              leading: Icon(Icons.today, color: Colors.red),
+              title: Text('Today Attendance'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HistoryStaff(user: widget.user),
+                  ),
+                );
+              },
             ),
             ListTile(
-              leading: Icon(Icons.account_circle),
+              leading: Icon(Icons.account_circle, color: Colors.green),
               title: Text('Profile'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileStaff(user: widget.user),
+                  ),
+                );
+              },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
+              leading: Icon(Icons.settings, color: Colors.grey[600]),
               title: Text('Settings'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingsPageStaff(user: widget.user),
+                  ),
+                );
+              },
             ),
           ],
         ),

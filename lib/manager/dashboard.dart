@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:leave_management/manager/attendance.dart';
+import 'package:leave_management/manager/history.dart';
 import 'package:leave_management/manager/myleavedashboard.dart';
 import 'package:leave_management/manager/profile.dart';
+import 'package:leave_management/manager/settings.dart';
 import 'package:leave_management/manager/staff.dart';
 import 'package:leave_management/manager/staffleavedashboard.dart';
 import 'package:leave_management/user.dart';
@@ -40,16 +42,41 @@ class _DashboardManagerState extends State<DashboardManager> {
               accountName: Text(widget.user.name),
             ),
             ListTile(
-              leading: Icon(Icons.message),
-              title: Text('Messages'),
+              leading: Icon(Icons.today, color: Colors.red),
+              title: Text('Today Attendance'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HistoryManager(user: widget.user),
+                  ),
+                );
+              },
             ),
             ListTile(
-              leading: Icon(Icons.account_circle),
+              leading: Icon(Icons.account_circle, color: Colors.green),
               title: Text('Profile'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileManager(user: widget.user),
+                  ),
+                );
+              },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
+              leading: Icon(Icons.settings, color: Colors.grey[600]),
               title: Text('Settings'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        SettingsPageManager(user: widget.user),
+                  ),
+                );
+              },
             ),
           ],
         ),

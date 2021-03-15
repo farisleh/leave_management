@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:leave_management/owner/attendance.dart';
+import 'package:leave_management/owner/history.dart';
 
 import 'package:leave_management/owner/profile.dart';
 import 'package:leave_management/owner/scan.dart';
+import 'package:leave_management/owner/settings.dart';
 import 'package:leave_management/owner/staff.dart';
 import 'package:leave_management/owner/staffleavedashboard.dart';
 import 'package:leave_management/user.dart';
@@ -40,16 +43,40 @@ class _DashboardOwnerState extends State<DashboardOwner> {
               accountName: Text(widget.user.name),
             ),
             ListTile(
-              leading: Icon(Icons.message),
-              title: Text('Messages'),
+              leading: Icon(Icons.today, color: Colors.red),
+              title: Text('Today Attendance'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HistoryOwner(user: widget.user),
+                  ),
+                );
+              },
             ),
             ListTile(
-              leading: Icon(Icons.account_circle),
+              leading: Icon(Icons.account_circle, color: Colors.green),
               title: Text('Profile'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileOwner(user: widget.user),
+                  ),
+                );
+              },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
+              leading: Icon(Icons.settings, color: Colors.grey[600]),
               title: Text('Settings'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingsPageOwner(user: widget.user),
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -108,7 +135,7 @@ class _DashboardOwnerState extends State<DashboardOwner> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ScanOwner(),
+                    builder: (context) => AttendanceOwner(user: widget.user),
                   ),
                 );
               },

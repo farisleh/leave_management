@@ -6,15 +6,15 @@ import 'package:grouped_list/grouped_list.dart';
 import 'package:http/http.dart' as http;
 import 'package:leave_management/user.dart';
 
-class HistoryManager extends StatefulWidget {
+class HistoryOwner extends StatefulWidget {
   final User user;
 
-  const HistoryManager({Key key, this.user}) : super(key: key);
+  const HistoryOwner({Key key, this.user}) : super(key: key);
   @override
-  _HistoryManagerState createState() => new _HistoryManagerState();
+  _HistoryOwnerState createState() => new _HistoryOwnerState();
 }
 
-class _HistoryManagerState extends State<HistoryManager> {
+class _HistoryOwnerState extends State<HistoryOwner> {
   List data = [];
   List searchList = [];
   List searchName = [];

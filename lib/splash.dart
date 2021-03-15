@@ -142,32 +142,33 @@ void _onLogin(String email, String password, BuildContext ctx) {
           ic_card: dres[2],
           email: dres[3],
           phone: dres[4],
-          address: dres[5],
-          department: dres[6],
-          position: dres[7],
-          birthday: dres[8],
-          leave: dres[9],
-          annual: dres[10],
-          join: dres[11],
-          last: dres[12]);
+          cimb: dres[5],
+          address: dres[6],
+          department: dres[7],
+          position: dres[8],
+          birthday: dres[9],
+          leave: dres[10],
+          annual: dres[11],
+          join: dres[12],
+          last: dres[13]);
 
-      if (dres[7] == "Business Owner") {
+      if (dres[8] == "Business Owner") {
         Navigator.push(
             ctx,
             MaterialPageRoute(
                 builder: (context) => DashboardOwner(user: user)));
       }
-      if (dres[7] == "Manager") {
+      if (dres[8] == "Manager") {
         Navigator.push(
             ctx,
             MaterialPageRoute(
                 builder: (context) => DashboardManager(user: user)));
       }
-      if (dres[7] == "Head of Department") {
+      if (dres[8] == "Head of Department") {
         Navigator.push(ctx,
             MaterialPageRoute(builder: (context) => DashboardHod(user: user)));
       }
-      if (dres[7] == "Staff" || dres[7] == "Internship") {
+      if (dres[8] == "Staff" || dres[7] == "Internship") {
         Navigator.push(
             ctx,
             MaterialPageRoute(

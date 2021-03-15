@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:leave_management/hod/attendance.dart';
+import 'package:leave_management/hod/history.dart';
 import 'package:leave_management/hod/profile.dart';
 import 'package:leave_management/hod/scan.dart';
+import 'package:leave_management/hod/settings.dart';
 import 'package:leave_management/hod/staffleavedashboard.dart';
 import 'package:leave_management/hod/myleavedashboard.dart';
 import 'package:leave_management/hod/staff.dart';
@@ -41,16 +43,40 @@ class _DashboardHodState extends State<DashboardHod> {
               accountName: Text(widget.user.name),
             ),
             ListTile(
-              leading: Icon(Icons.message),
-              title: Text('Messages'),
+              leading: Icon(Icons.today, color: Colors.red),
+              title: Text('Today Attendance'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => HistoryHod(user: widget.user),
+                  ),
+                );
+              },
             ),
             ListTile(
-              leading: Icon(Icons.account_circle),
+              leading: Icon(Icons.account_circle, color: Colors.green),
               title: Text('Profile'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileHod(user: widget.user),
+                  ),
+                );
+              },
             ),
             ListTile(
-              leading: Icon(Icons.settings),
+              leading: Icon(Icons.settings, color: Colors.grey[600]),
               title: Text('Settings'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingsPageHod(user: widget.user),
+                  ),
+                );
+              },
             ),
           ],
         ),
