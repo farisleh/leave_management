@@ -168,7 +168,7 @@ void _onLogin(String email, String password, BuildContext ctx) {
         Navigator.push(ctx,
             MaterialPageRoute(builder: (context) => DashboardHod(user: user)));
       }
-      if (dres[8] == "Staff" || dres[7] == "Internship") {
+      if (dres[8] == "Staff" || dres[8] == "Internship") {
         Navigator.push(
             ctx,
             MaterialPageRoute(

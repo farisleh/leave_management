@@ -157,7 +157,7 @@ class _LoginState extends State<Login> {
                 MaterialPageRoute(
                     builder: (context) => DashboardHod(user: user)));
           }
-          if (dres[8] == "Staff" || dres[7] == "Internship") {
+          if (dres[8] == "Staff" || dres[8] == "Internship") {
             Navigator.push(
                 context,
                 MaterialPageRoute(

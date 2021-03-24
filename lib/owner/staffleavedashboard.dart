@@ -160,9 +160,9 @@ class _StaffPendingScreenOwnerState extends State<StaffPendingScreenOwner> {
                                                     desc: list[index]
                                                         ['description'],
                                                     startDate: list[index]
-                                                        ['convert_start_date'],
+                                                        ['start_date'],
                                                     endDate: list[index]
-                                                        ['convert_end_date']),
+                                                        ['end_date']),
                                           ),
                                         );
                                       },
