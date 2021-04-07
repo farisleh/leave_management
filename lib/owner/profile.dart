@@ -279,6 +279,18 @@ class _ProfileOwnerState extends State<ProfileOwner> {
             ListTile(
                 leading: IconButton(
                   icon: Icon(
+                    Icons.school,
+                    size: 40.0,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {},
+                ),
+                title: const Text("Qualification"),
+                subtitle: Text(widget.user.qualification),
+                onTap: () => print("ListTile")),
+            ListTile(
+                leading: IconButton(
+                  icon: Icon(
                     Icons.home,
                     size: 40.0,
                     color: Colors.brown,

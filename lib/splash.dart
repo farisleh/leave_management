@@ -146,11 +146,12 @@ void _onLogin(String email, String password, BuildContext ctx) {
           address: dres[6],
           department: dres[7],
           position: dres[8],
-          birthday: dres[9],
-          leave: dres[10],
-          annual: dres[11],
-          join: dres[12],
-          last: dres[13]);
+          qualification: dres[9],
+          birthday: dres[10],
+          leave: dres[11],
+          annual: dres[12],
+          join: dres[13],
+          last: dres[14]);
 
       if (dres[8] == "Business Owner") {
         Navigator.push(

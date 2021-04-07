@@ -9,6 +9,7 @@ class ViewStaffProfileStaff extends StatelessWidget {
   final String email;
   final String department;
   final String position;
+  final String qualification;
   final String address;
   final String birthday;
   final String dateJoin;
@@ -23,6 +24,7 @@ class ViewStaffProfileStaff extends StatelessWidget {
       this.email,
       this.department,
       this.position,
+      this.qualification,
       this.address,
       this.birthday,
       this.dateJoin,
@@ -242,6 +244,18 @@ class ViewStaffProfileStaff extends StatelessWidget {
                 ),
                 title: const Text("Position"),
                 subtitle: Text(this.position),
+                onTap: () => print("ListTile")),
+            ListTile(
+                leading: IconButton(
+                  icon: Icon(
+                    Icons.school,
+                    size: 40.0,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {},
+                ),
+                title: const Text("Qualification"),
+                subtitle: Text(this.qualification),
                 onTap: () => print("ListTile")),
             ListTile(
                 leading: IconButton(

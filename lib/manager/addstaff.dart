@@ -38,7 +38,17 @@ class _AddStaffManagerState extends State<AddStaffManager> {
   final TextEditingController _phonecontroller = TextEditingController();
   final TextEditingController _cimbcontroller = TextEditingController();
   final TextEditingController _addresscontroller = TextEditingController();
-  String _name, _ic, _email, _password, _phone, _cimb, _address, _leave;
+  final TextEditingController _qualificationcontroller =
+      TextEditingController();
+  String _name,
+      _ic,
+      _email,
+      _password,
+      _phone,
+      _cimb,
+      _address,
+      _qualification,
+      _leave;
 
   Future<Null> _selectBirthdayDate(BuildContext context) async {
     final picked = await showDatePicker(
@@ -340,6 +350,20 @@ class _AddStaffManagerState extends State<AddStaffManager> {
               new Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: TextFormField(
+                  controller: _qualificationcontroller,
+                  keyboardType: TextInputType.text,
+                  decoration: new InputDecoration(
+                      icon: Icon(Icons.school),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      labelText: 'Qualification:'),
+                  style: new TextStyle(fontSize: 17.0, color: Colors.black),
+                ),
+              ),
+              new Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: TextFormField(
                   controller: _leavecontroller,
                   keyboardType: TextInputType.number,
                   decoration: new InputDecoration(
@@ -456,6 +480,7 @@ class _AddStaffManagerState extends State<AddStaffManager> {
     _phone = _phonecontroller.text;
     _cimb = _cimbcontroller.text;
     _address = _addresscontroller.text;
+    _qualification = _qualificationcontroller.text;
     _leave = _leavecontroller.text;
     _dateTextBirthday = _dateTextBirthday;
     _dateTextJoin = _dateTextJoin;
@@ -497,6 +522,12 @@ class _AddStaffManagerState extends State<AddStaffManager> {
       return;
     }
 
+    if (_qualification.isEmpty) {
+      Toast.show("You must fill in qualification!", context,
+          duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
+      return;
+    }
+
     if (_leave.isEmpty) {
       Toast.show("Give some number for annual leave", context,
           duration: Toast.LENGTH_LONG, gravity: Toast.BOTTOM);
@@ -519,6 +550,7 @@ class _AddStaffManagerState extends State<AddStaffManager> {
         "address": _address,
         "department": dropdownValueDepartment,
         "position": dropdownValuePosition,
+        "qualification": _qualification,
         "annual_leave": _leave,
         "birthday": _dateTextBirthday,
         "date_join": _dateTextJoin,

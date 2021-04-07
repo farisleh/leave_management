@@ -13,6 +13,7 @@ class ViewStaffProfileManager extends StatefulWidget {
   final String email;
   final String department;
   final String position;
+  final String qualification;
   final String address;
   final String birthday;
   final String totalLeave;
@@ -29,6 +30,7 @@ class ViewStaffProfileManager extends StatefulWidget {
       this.email,
       this.department,
       this.position,
+      this.qualification,
       this.address,
       this.birthday,
       this.totalLeave,
@@ -271,6 +273,18 @@ class _ViewStaffProfileManagerState extends State<ViewStaffProfileManager> {
                 ),
                 title: const Text("Position"),
                 subtitle: Text(widget.position),
+                onTap: () => print("ListTile")),
+            ListTile(
+                leading: IconButton(
+                  icon: Icon(
+                    Icons.school,
+                    size: 40.0,
+                    color: Colors.black,
+                  ),
+                  onPressed: () {},
+                ),
+                title: const Text("Qualification"),
+                subtitle: Text(widget.qualification),
                 onTap: () => print("ListTile")),
             ListTile(
                 leading: IconButton(

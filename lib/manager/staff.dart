@@ -73,6 +73,7 @@ class _StaffManagerState extends State<StaffManager> {
                                   email: data[index]['email'],
                                   department: data[index]['department'],
                                   position: data[index]['position'],
+                                  qualification: data[index]['qualification'],
                                   address: data[index]['address'],
                                   birthday: data[index]['birthday'],
                                   dateJoin: data[index]['date_join'],
